@@ -1,0 +1,22 @@
+ 
+<accion nombre="AGREGAR_COMPONENTE">
+<parametros>
+<parametro nombre="ID">
+[comp-1]
+</parametro>
+<parametro nombre="PAGINA">
+[productos]
+</parametro>
+<parametro nombre="CLASE">
+[TITULO]
+</parametro>
+</parametros>
+<atributos>
+<atributo nombre="TEXTO">
+[Este es el texto que aparece en el titulo :) ]
+</atributo>
+<atributo nombre="COLOR">
+[#5A5A5A]
+</atributo>
+</atributos>
+</accion>
