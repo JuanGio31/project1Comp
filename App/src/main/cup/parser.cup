@@ -1,55 +1,34 @@
 package org.example;
-
 import java_cup.runtime.*;
 
-class Parser;
+class ParserConsulta;
 
 parser code {:
-    public void syntax_error (Symbol sy) {
-        System.out.println("Sintax error: "+ sy.value);
-    }
 
-    public void unrecovered_syntax_error(Symbol s)throws java.lang.Exception{
-        System.out.println("Sintax error:" + s.value);
-    }
 :};
 
-
-//** Simboloes terminal **//
-terminal SELECCIONAR, FILTRAR, INSERTAR, ACTUALIZAR, ASIGNAR, ELIMINAR, VALORES, EN, FIN_INST, COMA;
-terminal OP_RELACIONAL, AND, OR, COLUMN_ID, CONST, LPAREN, RPAREN, PLUS, TIMES, PATH, NUMBER;
+//** Simbolos terminales **//
+terminal IGUAL, MENOR, MAYOR, COMA, P_COMA, PATH, ID, CONSULTAR, VIS_SITIOS, VIS_PAGINA, PAG_POPULARES, COMPONENTE, TODOS;
 
 //** Simbolos no terminales **//
-nonterminal archivos, filtrar, logica, relacional, listar, expr, valores;
-nonterminal seleccionar, insertar, actualizar, eliminar;
+nonterminal visitas_sitio, visitas_pagina, paginas_pop, componente;
+nonterminal S, A, B, C, D, E, G;
 
-start with seleccionar;
-archivos::= COLUMN_ID
-            | COLUMN_ID COMA archivos
-            | LPAREN COLUMN_ID COMA archivos RPAREN;
+start with S;
 
-relacional::= COLUMN_ID OP_RELACIONAL CONST
-            |   COLUMN_ID OP_RELACIONAL NUMBER;
+S ::= CONSULTAR A | S CONSULTAR A | error;
 
-logica::= relacional
-        |   relacional AND relacional
-        |   relacional OR relacional;
+A ::= visitas_sitio | visitas_pagina | paginas_pop | componente;
 
-filtrar::= FILTRAR logica;
+B ::= PATH
+    | B COMA PATH;
 
-expr::= COLUMN_ID
-        | COLUMN_ID COMA expr;
+visitas_sitio ::= VIS_SITIOS B P_COMA;
 
-listar::= LPAREN COLUMN_ID COMA expr RPAREN;
+visitas_pagina ::= VIS_PAGINA B P_COMA;
 
-seleccionar::= SELECCIONAR archivos EN PATH FIN_INST
-            |   SELECCIONAR archivos EN PATH filtrar FIN_INST;
+paginas_pop ::= PAG_POPULARES B P_COMA;
 
-valores::= CONST
-        |   NUMBER
-        |   COMA valores ;
-
-insertar::= INSERTAR EN PATH listar VALORES LPAREN valores RPAREN FIN_INST;
-
-actualizar::= ACTUALIZAR EN PATH ASIGNAR archivos filtrar FIN_INST;
+componente ::= COMPONENTE ID B P_COMA
+            | COMPONENTE TODOS B P_COMA;
 

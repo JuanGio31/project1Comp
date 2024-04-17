@@ -57,8 +57,8 @@
 
 
             <!--plugin j/flex-->
-            
-<!--            <plugin>
+
+            <plugin>
                 <groupId>de.jflex</groupId>
                 <artifactId>jflex-maven-plugin</artifactId>
                 <version>1.9.1</version>
@@ -69,13 +69,13 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
-            
+            </plugin>
+
             <!--fin-->
 
             <!--cup-->
-            
-<!--            <plugin>
+
+            <plugin>
                 <groupId>com.github.vbmacher</groupId>
                 <artifactId>cup-maven-plugin</artifactId>
                 <version>11b-20160615-3</version>
@@ -86,9 +86,14 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
-            
-            
+                <configuration>
+                    <className>MyParserClassName</className>
+                    <symbolsName>MySymbolsClassName</symbolsName>
+                </configuration>
+            </plugin>
+
+
+
         </plugins>
     </build>
 

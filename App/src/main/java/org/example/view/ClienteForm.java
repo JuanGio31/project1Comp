@@ -4,6 +4,7 @@
  */
 package org.example.view;
 
+import java.awt.Color;
 import org.example.FilesControl;
 
 /**
@@ -21,6 +22,7 @@ public class ClienteForm extends javax.swing.JFrame {
         initComponents();
         setTitle("Creador-HTML");
         this.fc = new FilesControl();
+        //salida("Sin errores", 11);
     }
 
     /**
@@ -36,11 +38,15 @@ public class ClienteForm extends javax.swing.JFrame {
         visorXML = new javax.swing.JTextArea();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        salidaArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cargarArchivoBtn = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,31 +54,29 @@ public class ClienteForm extends javax.swing.JFrame {
         visorXML.setRows(5);
         jScrollPane1.setViewportView(visorXML);
 
+        salidaArea.setColumns(20);
+        salidaArea.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        salidaArea.setRows(5);
+        jScrollPane2.setViewportView(salidaArea);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Build", jPanel1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Errores", jPanel2);
+        jTabbedPane1.addTab("Salida", jPanel1);
 
         jMenu1.setText("Archivo");
 
@@ -84,9 +88,34 @@ public class ClienteForm extends javax.swing.JFrame {
         });
         jMenu1.add(cargarArchivoBtn);
 
+        jMenuItem1.setText("Crear Proyecto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Opciones");
+
+        jMenuItem2.setText("Analizar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Abrir Sitio");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -116,20 +145,56 @@ public class ClienteForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarArchivoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarArchivoBtnActionPerformed
-
         String contenido = fc.getContenido();
         visorXML.setText(contenido);
     }//GEN-LAST:event_cargarArchivoBtnActionPerformed
 
+    /**
+     * Metodo para crear un nuevo proyecto en formato XML
+     * @param evt 
+     */
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    /**
+     * Metodo que envia el texto hacia el servidor para analizarlo y obtener una respuesta
+     * @param evt 
+     */
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    /**
+     * Metodo para abrir el sitio web, obtener mensaje si no existe o se a generado
+     * @param evt 
+     */
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void salida(String mensaje, int a) {
+        if (a == 1) {
+            salidaArea.setForeground(Color.GREEN);
+            salidaArea.setText(mensaje);
+        } else {
+            salidaArea.setForeground(Color.RED);
+            salidaArea.setText(mensaje);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cargarArchivoBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea salidaArea;
     private javax.swing.JTextArea visorXML;
     // End of variables declaration//GEN-END:variables
 }

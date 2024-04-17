@@ -86,7 +86,7 @@ public class FilesControl {
 
     private File createFile(String fileName) {
         try {
-            File myObj = new File("example/" + fileName + ".dot");
+            File myObj = new File("example/" + fileName + ".html");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
