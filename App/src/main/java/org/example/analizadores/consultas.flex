@@ -73,5 +73,5 @@ yytext());
 
 ///[^] { throw new Error("cadena ilegal < "+ yytext()+" >"); }
 //[^] { return symbol(ParserConsultaSym.ERROR, yytext()); }
-\n  {yychar=1;}
+//\n  {yychar=1;}
 . {System.err.println("watning: Unrecognized character "+yytext()+ "--ignored"+" at " + (yyline+1) +", "+(yycolumn+1));}

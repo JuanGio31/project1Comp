@@ -1,0 +1,15 @@
+ 
+java -jar lib/jflex-full-1.9.1.jar
+src/main/java/org/example/analizadores/xml.flex
+
+java -jar lib/jflex-full-1.9.1.jar
+src/main/java/org/example/analizadores/consultas.flex
+
+java -jar lib/java-cup-11b.jar
+src/main/java/org/example/analizadores/consulta_parser.cup
+
+java -jar lib/java-cup-11b.jar
+src/main/java/org/example/analizadores/xml_parser.cup
+
+
+mv *.java src/main/java/org/example/analizadores/
