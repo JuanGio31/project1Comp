@@ -5,7 +5,7 @@
 package org.example.view;
 
 import java.awt.Color;
-import org.example.FilesControl;
+import org.example.controller.FilesControl;
 
 /**
  *

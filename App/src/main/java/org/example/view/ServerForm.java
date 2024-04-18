@@ -4,17 +4,20 @@
  */
 package org.example.view;
 
+import org.example.controller.FilesControl;
 import org.example.analizadores.Lexer_Consulta;
 import org.example.analizadores.ParserConsulta;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.StringReader;
 
 
 /**
- *
  * @author giovanic
  */
 public class ServerForm extends javax.swing.JFrame {
+    private final FilesControl control;
 
     /**
      * Creates new form ServerForm
@@ -22,6 +25,7 @@ public class ServerForm extends javax.swing.JFrame {
     public ServerForm() {
         initComponents();
         setTitle("Servidor");
+        control = new FilesControl();
     }
 
     /**
@@ -57,34 +61,14 @@ public class ServerForm extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnConsultar)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConsultar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE).addGroup(layout.createSequentialGroup().addComponent(jLabel1).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(btnConsultar))).addContainerGap()));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(btnConsultar)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        control.eliminarArchivo("ERRORES_S_S_CONSULTAS.txt");
         String temp = areaConsultas.getText();
         Lexer_Consulta lc = new Lexer_Consulta(new StringReader(temp));
         ParserConsulta parser = new ParserConsulta(lc);
@@ -94,6 +78,15 @@ public class ServerForm extends javax.swing.JFrame {
             System.out.println("---------- FIN PARSER -----------");
         } catch (Exception e) {
             System.out.println("error > " + e.getMessage());
+        }
+        File file = new File("ERRORES_S_S_CONSULTAS.txt");
+        if (file.exists()) {
+            String txt = control.getContenido("ERRORES_S_S_CONSULTAS.txt");
+            JOptionPane.showMessageDialog(
+                    null,
+                    txt,
+                    "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 

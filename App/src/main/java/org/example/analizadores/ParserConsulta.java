@@ -6,6 +6,9 @@
 package org.example.analizadores;
 
 import java_cup.runtime.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -120,12 +123,31 @@ public class ParserConsulta extends java_cup.runtime.lr_parser {
 
 
 
-     public void syntax_error (Symbol sy) {
-            System.out.println("Sintax error: "+ sy.value);
-        }
+//     public void syntax_error (Symbol sy) {
+//            System.out.println("Sintax error:" + sy.value + " en la linea "+sy.right+", columna "+sy.left);
+//        }
+//
+//        public void unrecovered_syntax_error(Symbol s)throws java.lang.Exception{
+//            System.out.println("Sintax error:" + s.value + " en la linea "+s.right+", columna "+s.left);
+//        }
 
-        public void unrecovered_syntax_error(Symbol s)throws java.lang.Exception{
-            System.out.println("Sintax error:" + s.value + " en la linea "+s.right+", columna "+s.left);
+        public void syntax_error(Symbol s){
+            int fila = 0;
+            int col = 0;
+            fila = s.left + 1;
+            col = s.right + 1;
+            report_error("ERROR SINTACTICO EN: '"+ (String) s.value+"' linea: ("+fila+"), columna: ("+col+")\n",null);
+
+            try {
+                FileWriter fw2 = new FileWriter("ERRORES_S_S_CONSULTAS.txt",true);
+                BufferedWriter bw2 = new BufferedWriter(fw2);
+                PrintWriter salida2 = new PrintWriter(bw2);
+                salida2.println("ERROR SINTACTICO EN: " + (String) s.value+"' linea: ("+fila+"), columna: ("+col+")");
+                salida2.close();
+            }catch(java.io.IOException ioex) { }
+            }
+        public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
+            report_fatal_error("", null);
         }
 
 

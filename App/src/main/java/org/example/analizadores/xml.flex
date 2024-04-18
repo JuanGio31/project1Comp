@@ -1,7 +1,6 @@
+package org.example.analizadores;
 
-package org.example;
-
-import java_cup.runtime.*;
+import java_cup.runtime.*;import javax.swing.text.html.parser.Parser;
 
 %%
 %public
@@ -9,11 +8,13 @@ import java_cup.runtime.*;
 %cup
 %line
 %column
+%ignorecase
 
 L = [\w]
+nombre = [A-Z]+
 D = [0-9]
-name = {L}*|{L}*["."]{L}*
-path = "\"" {name} "\""
+name = (\$|"_"|"-") ((\$|"_"|"-") | {L})*
+ID = "\"" {name} "\""
 
 LineTerminator = \r|\n|\r\n
 WhiteSpace = {LineTerminator} | [ \t\f]
@@ -36,38 +37,28 @@ WhiteSpace = {LineTerminator} | [ \t\f]
 
 %%
 <YYINITIAL> {
-    "="     {return symbol(ParserXMLSym.IGUAL, yytext()); }
+    "="     {return symbol(ParserXMLSym.EQ, yytext()); }
     "<"     {return symbol(ParserXMLSym.MENOR, yytext()); }
     ">"     {return symbol(ParserXMLSym.MAYOR, yytext()); }
     ","     {return symbol(ParserXMLSym.COMA, yytext()); }
     ";"     {return symbol(ParserXMLSym.P_COMA, yytext()); }
+    "/"     {return symbol(ParserXMLSym.SLASH, yytext()); }
+    "["     {return symbol(ParserXMLSym.COR_IZ, yytext()); }
+    "]"     {return symbol(ParserXMLSym.COR_DER, yytext()); }
 
-    {path}    {return symbol(ParserXMLSym.PATH, yytext()); }
-    (\$|"_"|"-") ((\$|"_"|"-") | {L})*       {return
-symbol(ParserXMLSym.ID, yytext()); }
 
-    {L}*          {
-                        String str = yytext();
-                        if (str.toUpperCase().equals("CONSULTAR")) {
-                            return symbol(ParserXMLSym.CONSULTAR,
-yytext());
-                        }else if (str.toUpperCase().equals("VISITAS_SITIO")){
-                            return symbol(ParserXMLSym.VIS_SITIOS,
-yytext());
-                        }else if(str.toUpperCase().equals("VISITAS_PAGINA")){
-                            return symbol(ParserXMLSym.VIS_PAGINA,
-yytext());
-                        } else
-if(str.toUpperCase().equals("PAGINAS_POPULARES")){
-                            return symbol(ParserXMLSym.PAG_POPULARES,
-yytext());
-                        }else if(str.toUpperCase().equals("COMPONENTE")){
-                            return symbol(ParserXMLSym.COMPONENTE,
-yytext());
-                        }else if(str.toUpperCase().equals("TODOS")){
-                            return symbol(ParserXMLSym.TODOS, yytext());
-                        }
-                    }
+    "accion" {return symbol(ParserXMLSym.ACCION, yytext()); }
+    "parametro" {return symbol(ParserXMLSym.PARAMETRO, yytext()); }
+    "parametros"    {return symbol(ParserXMLSym.PARAMETROS, yytext()); }
+    "atributos" {return symbol(ParserXMLSym.ATRIBUTOS, yytext()); }
+    "atributo"  {return symbol(ParserXMLSym.ATRIBUTO, yytext()); }
+    "nombre"    {return symbol(ParserXMLSym.NOMBRE, yytext()); }
+    "etiqueta"  {return symbol(ParserXMLSym.ETIQUETA, yytext()); }
+    "etiquetas"  {return symbol(ParserXMLSym.ETIQUETAS, yytext()); }
+    "valor" {return symbol(ParserXMLSym.VALOR, yytext()); }
+
+    {ID}    {return symbol(ParserXMLSym.ID, yytext()); }
+
     {WhiteSpace}+ { /* no haceer nada */}
 
     }

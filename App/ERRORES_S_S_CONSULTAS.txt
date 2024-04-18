@@ -1,0 +1,1 @@
+ERROR SINTACTICO EN: "misitio.mipagina"' linea: (1), columna: (24)
