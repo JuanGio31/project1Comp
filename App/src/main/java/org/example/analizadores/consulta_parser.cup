@@ -1,0 +1,40 @@
+package org.example.analizadores;
+import java_cup.runtime.*;
+
+class ParserConsulta;
+
+parser code {:
+     public void syntax_error (Symbol sy) {
+            System.out.println("Sintax error: "+ sy.value);
+        }
+
+        public void unrecovered_syntax_error(Symbol s)throws java.lang.Exception{
+            System.out.println("Sintax error:" + s.value + " en la linea "+s.right+", columna "+s.left);
+        }
+:};
+
+//** Simbolos terminales **//
+terminal IGUAL, MENOR, MAYOR, COMA, P_COMA, PATH, ID, CONSULTAR, VIS_SITIOS, VIS_PAGINA, PAG_POPULARES, COMPONENTE, TODOS;
+
+//** Simbolos no terminales **//
+nonterminal visitas_sitio, visitas_pagina, paginas_pop, componente;
+nonterminal S, A, B, C, D, E, G;
+
+start with S;
+
+S ::= CONSULTAR A | S CONSULTAR A | error;
+
+A ::= visitas_sitio | visitas_pagina | paginas_pop | componente;
+
+B ::= PATH
+    | B COMA PATH;
+
+visitas_sitio ::= VIS_SITIOS B P_COMA;
+
+visitas_pagina ::= VIS_PAGINA B P_COMA;
+
+paginas_pop ::= PAG_POPULARES B P_COMA;
+
+componente ::= COMPONENTE ID B P_COMA
+            | COMPONENTE TODOS B P_COMA;
+

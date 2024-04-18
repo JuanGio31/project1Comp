@@ -1,10 +1,16 @@
-package org.example;
+package org.example.xml;
 import java_cup.runtime.*;
 
-class ParserConsulta;
+class ParserXML;
 
 parser code {:
+     public void syntax_error (Symbol sy) {
+            System.out.println("Sintax error: "+ sy.value);
+        }
 
+        public void unrecovered_syntax_error(Symbol s)throws java.lang.Exception{
+            System.out.println("Sintax error:" + s.value + " en la linea "+s.right+", columna "+s.left);
+        }
 :};
 
 //** Simbolos terminales **//

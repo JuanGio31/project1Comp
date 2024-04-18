@@ -4,9 +4,11 @@
  */
 package org.example.view;
 
+import org.example.analizadores.Lexer_Consulta;
+import org.example.analizadores.ParserConsulta;
+
 import java.io.StringReader;
-import org.example.Lexer_Consultas;
-import org.example.ParserConsulta;
+
 
 /**
  *
@@ -84,7 +86,7 @@ public class ServerForm extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         String temp = areaConsultas.getText();
-        Lexer_Consultas lc = new Lexer_Consultas(new StringReader(temp));
+        Lexer_Consulta lc = new Lexer_Consulta(new StringReader(temp));
         ParserConsulta parser = new ParserConsulta(lc);
         try {
             System.out.println("------INICIO PARSER--------");

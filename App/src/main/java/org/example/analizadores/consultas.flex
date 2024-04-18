@@ -1,10 +1,10 @@
-package org.example;
+package org.example.analizadores;
 
 import java_cup.runtime.*;
 
 %%
 %public
-%class Lexer_Consultas
+%class Lexer_Consulta
 %cup
 %line
 %column
