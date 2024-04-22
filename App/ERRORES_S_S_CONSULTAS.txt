@@ -1,1 +1,1 @@
-ERROR SINTACTICO EN: "misitio.mipagina"' linea: (1), columna: (24)
+ERROR SINTACTICO EN: TODOS' linea: (6), columna: (21)

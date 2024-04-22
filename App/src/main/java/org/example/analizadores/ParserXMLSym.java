@@ -8,26 +8,56 @@ package org.example.analizadores;
 /** CUP generated class containing symbol constants. */
 public class ParserXMLSym {
   /* terminals */
-  public static final int MENOR = 3;
-  public static final int SLASH = 7;
-  public static final int ACCION = 10;
-  public static final int ETIQUETAS = 17;
-  public static final int ETIQUETA = 16;
-  public static final int ID = 19;
-  public static final int COMA = 5;
-  public static final int NOMBRE = 15;
-  public static final int MAYOR = 4;
-  public static final int EOF = 0;
+  public static final int VALOR_P = 46;
+  public static final int ALINEACION = 37;
+  public static final int BORRAR_PAGINA = 23;
+  public static final int PAGINA = 34;
   public static final int PARAMETROS = 12;
-  public static final int ATRIBUTOS = 13;
-  public static final int error = 1;
-  public static final int EQ = 2;
-  public static final int P_COMA = 6;
-  public static final int ATRIBUTO = 14;
+  public static final int SLASH = 7;
+  public static final int NOMBRE = 15;
+  public static final int ANCHO = 45;
+  public static final int VAL_FECHA = 48;
+  public static final int IZQUIERDA = 39;
+  public static final int ETIQUETAS = 17;
+  public static final int BORRAR_SITIO = 21;
   public static final int COR_DER = 9;
-  public static final int PARAMETRO = 11;
+  public static final int VAL_ID = 49;
+  public static final int CENTRAR = 38;
+  public static final int FECHA_MOD = 29;
+  public static final int TITULO = 31;
+  public static final int PADRE = 33;
+  public static final int ID = 19;
+  public static final int BORRAR_COMP = 26;
+  public static final int NUEVA_PAGINA = 22;
+  public static final int EOF = 0;
+  public static final int USUARIO_MOD = 30;
+  public static final int CLASE = 35;
+  public static final int error = 1;
+  public static final int COMA = 5;
+  public static final int MENOR = 3;
+  public static final int ADD_COMPONENTE = 25;
+  public static final int ATRIBUTOS = 13;
+  public static final int VAL_COLOR = 47;
+  public static final int EQ = 2;
+  public static final int ATRIBUTO = 14;
+  public static final int ACCION = 10;
+  public static final int COLOR = 42;
+  public static final int MAYOR = 4;
+  public static final int FECHA_CREACION = 28;
+  public static final int USUARIO_CREACION = 27;
   public static final int VALOR = 18;
+  public static final int DERECHA = 40;
+  public static final int ORIGEN = 43;
   public static final int COR_IZ = 8;
+  public static final int P_COMA = 6;
+  public static final int PARAMETRO = 11;
+  public static final int SITIO = 32;
+  public static final int TEXTO = 36;
+  public static final int ETIQUETA = 16;
+  public static final int ALTURA = 44;
+  public static final int JUSTIFICAR = 41;
+  public static final int NUEVO_SITIO = 20;
+  public static final int MODIFICAR_PAGINA = 24;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -48,7 +78,37 @@ public class ParserXMLSym {
   "ETIQUETA",
   "ETIQUETAS",
   "VALOR",
-  "ID"
+  "ID",
+  "NUEVO_SITIO",
+  "BORRAR_SITIO",
+  "NUEVA_PAGINA",
+  "BORRAR_PAGINA",
+  "MODIFICAR_PAGINA",
+  "ADD_COMPONENTE",
+  "BORRAR_COMP",
+  "USUARIO_CREACION",
+  "FECHA_CREACION",
+  "FECHA_MOD",
+  "USUARIO_MOD",
+  "TITULO",
+  "SITIO",
+  "PADRE",
+  "PAGINA",
+  "CLASE",
+  "TEXTO",
+  "ALINEACION",
+  "CENTRAR",
+  "IZQUIERDA",
+  "DERECHA",
+  "JUSTIFICAR",
+  "COLOR",
+  "ORIGEN",
+  "ALTURA",
+  "ANCHO",
+  "VALOR_P",
+  "VAL_COLOR",
+  "VAL_FECHA",
+  "VAL_ID"
   };
 }
 
